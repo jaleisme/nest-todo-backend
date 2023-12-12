@@ -24,13 +24,15 @@
 
 ## Description
 
-This is a backend system for a todo list app. The tutorial I'm using can be found [here](https://shaibenshimol.medium.com/nestjs-and-mysql-in-10-minutes-711e02ec1dab)/
+This is a backend system for a todo list app. The tutorial I'm using can be found [here](https://shaibenshimol.medium.com/nestjs-and-mysql-in-10-minutes-711e02ec1dab).
+</br>
 
 ## Project Installation
 
 ```bash
 $ npm install
 ```
+</br>
 
 ## Running the app
 
@@ -44,6 +46,7 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+</br>
 
 ## Test
 
