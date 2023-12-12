@@ -26,6 +26,7 @@
 
 This is a backend system for a todo list app. The tutorial I'm using can be found [here](https://shaibenshimol.medium.com/nestjs-and-mysql-in-10-minutes-711e02ec1dab).
 </br>
+</br>
 
 ## Project Installation
 
@@ -60,7 +61,9 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+</br>
 
-## License
-
-Nest is [MIT licensed](LICENSE).
+## Learning Notes
+### Module, Service, and Controller Explanation
+#### Modules — Architecture
+<p>Every NestJs app has at least one @Module() class — root module. The root @Module for an app is named so because it's the main module that includes child @Module() in a hierarchy of any depth.</p>
