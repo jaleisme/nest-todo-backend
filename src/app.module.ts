@@ -6,26 +6,31 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Task } from './tasks/task/task.entity';
 
+const entities = [Task];
+
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     // TypeOrmModule.forRoot(dbConfig),
     TypeOrmModule.forRootAsync({
       imports:[ConfigModule],
       useFactory: (configService: ConfigService) => ({
-          type:'mysql',
-          host:'localhost',
-          port:3306,
-          username:'root',
-          password:'',
-          database:'nest-todo',
-          schema:'public',
-          synchronize: true,
-          logging: true,
-          entities:[Task],
+        type: process.env.DB_TYPE as any,
+        host: process.env.DB_HOST,
+        port: parseInt(process.env.DB_PORT),
+        username: process.env.DB_USERNAME,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME,
+        entities: entities,
+        schema:'public',
+        synchronize: true,
+        // logging: true,
       }),
       inject: [ConfigService],
     }),
-    TasksModule
+    TasksModule,
   ],
   controllers: [AppController],
   providers: [AppService],
