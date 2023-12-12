@@ -67,10 +67,12 @@ $ npm run test:cov
 ### Module, Service, and Controller Explanation
 #### Modules — Architecture
 <p>Every NestJs app has at least one @Module() class — root module. The root @Module() for an app is named so because it's the main module that includes child @Module() in a hierarchy of any depth. The most important properties inside a module are:</p>
-- <b>Imports: </b> other modules whose exported classes are needed by component or template declared in this *@Module()*.
-- **Controllers: ** registers of controllers that exists within your system.
-- **Providers: ** registers of services that contributes in all part of the system.
-- **Exports: ** the subset of declarations that should be accessible in other *@Modules()*
+<ul>
+  <li><b>Imports: </b> other modules whose exported classes are needed by component or template declared in this <i>@Module()</i>.</li>
+  <li><b>Controllers: /<b> registers of controllers that exists within your system.</li>
+  <li><b>Providers: </b> registers of services that contributes in all part of the system.</li>
+  <li><b>Exports: </b> the subset of declarations that should be accessible in other <i>@Modules()</i></li>
+</ul>
 
 #### Services
 <p>Service is a container that encapsulates all the business logic of the system. A service can be analogized into a specifically defined function. This way, you can use a certain business logic over and over again througout your system without having to duplicate the same logic and lines of codes.</p>
