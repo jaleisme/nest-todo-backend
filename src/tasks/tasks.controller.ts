@@ -1,7 +1,8 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, Session, UseGuards } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { Task } from './task/task.entity';
 import { ApiOkResponse, ApiOperation, ApiParam } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/components/auth/guard/jwt-auth.guard';
 
 @Controller('tasks')
 export class TasksController {
@@ -37,6 +38,8 @@ export class TasksController {
           },
     })
     getAll(){
+        // const token = Session;
+        // return token;
         return this.service.getTasks();
     }
 
@@ -65,6 +68,7 @@ export class TasksController {
     }
 
     // ADD NEW TASK
+    @UseGuards(JwtAuthGuard)
     @Post()
     @ApiParam({name: "task", required: true, description: "An object of task data including the id as identifier", schema: {type: 'object'}})
     @ApiOperation({
@@ -81,6 +85,7 @@ export class TasksController {
     }
 
     // UPDATE TASK
+    @UseGuards(JwtAuthGuard)
     @Put()
     @ApiParam({name: "task", required: true, description: "An object of task data including the id as identifier", schema: {type: 'object'}})
     @ApiOperation({

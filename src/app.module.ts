@@ -5,6 +5,10 @@ import { TasksModule } from './tasks/tasks.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Task } from './tasks/task/task.entity';
+import { AuthModule } from './components/auth/auth.module';
+import { UsersModule } from './components/users/users.module';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
 
 const entities = [Task];
 
@@ -31,8 +35,13 @@ const entities = [Task];
       inject: [ConfigService],
     }),
     TasksModule,
+    AuthModule,
+    UsersModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, {
+    provide: APP_INTERCEPTOR,
+    useClass: AuthInterceptor,
+  }],
 })
 export class AppModule {}

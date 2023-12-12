@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Users as User } from "src/components/users/entities/user.entity";
 
 @Entity()
 export class Task {
@@ -13,4 +14,7 @@ export class Task {
 
     @Column()
     is_done: boolean;
+
+    @Column()
+    user_id: number
 }
